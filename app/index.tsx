@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 
 const index = () => {
   const [input,setInput] = useState('')
-  const [todo,setTodo] = useState<string[]>([])
+  const [todo,setTodo] = useState<string[]>(['hello world'])
 
   const addtodo = ()=>{
     console.log(input);
@@ -22,7 +22,7 @@ const index = () => {
         value={input}
       />
 
-      <TouchableOpacity style={styles.button} onPress={addtodo}>
+      <TouchableOpacity style={styles.button} onPress={addtodo} activeOpacity={0.5}>
         <Text style = {styles.btnText}>Press Here</Text>
       </TouchableOpacity>
       
@@ -32,11 +32,26 @@ const index = () => {
         data={todo}
         renderItem={({item,index})=>{
           return <View style= {styles.item}>
-            <Text>{item}</Text>
+            <Text style ={{fontSize:20}}>{item}</Text>
+            <TouchableOpacity style={styles.Listdelete} 
+              activeOpacity={0.5}
+            >
+              <Text>Delete</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.Listedit} 
+              activeOpacity={0.5}
+            >
+              <Text>Edit</Text>
+            </TouchableOpacity>
           </View>
         }}
       />
-      : <Text>Item not fund</Text> } 
+      : <Text style= {{
+        color: "black",
+        marginBottom: 20,
+        marginTop: 20,
+      }}>Item Not Found...</Text> } 
     </SafeAreaView>
   )
 }
@@ -80,6 +95,24 @@ const styles = StyleSheet.create({
   innerText: {
     marginTop: 20,
     marginBottom: 20,
+  },
+  Listdelete :{
+    backgroundColor :'red',
+    padding: 10,
+    width : 300,
+    justifyContent : 'center',
+    alignItems : 'center',
+    borderRadius : 5,
+    margin:5
+  },
+  Listedit: {
+    backgroundColor :'green',
+    padding: 10,
+    width : 300,
+    justifyContent : 'center',
+    alignItems : 'center',
+    borderRadius : 5,
+    margin:5
   }
 })
 
