@@ -1,25 +1,49 @@
-import { Text, StyleSheet } from 'react-native'
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+
 
 const index = () => {
+  const [input,setInput] = useState('')
+
+  const addtodo = ()=>{
+    console.log(input);
+    
+  }
   return (
     <SafeAreaView style ={styles.container}>
-      <Text style ={styles.text}>Hello World</Text>
+      <Text style ={styles.text}>Todo App</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={setInput}
+        value={input}
+      />
+
+      <TouchableOpacity style={styles.button} onPress={addtodo}>
+        <Text>Press Here</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container : {
-    flex : 1,
-    alignItems: 'center'
+    alignItems : 'center',
   },
   text : {
     color: "black",
     fontSize: 24,
-    marginTop: 200
-  }
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+  },
 })
 
 export default index
