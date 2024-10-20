@@ -29,6 +29,7 @@ const index = () => {
     todo.splice(index,1,update)
     setTodo([...todo])
     setModalVisible(false)
+    setUpdate('')
   }
 
   return (
@@ -107,10 +108,6 @@ const index = () => {
           </View>
         </View>
       </Modal>
-      {/* <Pressable
-        onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable> */}
     </View>
     </SafeAreaView>
   )
