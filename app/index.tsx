@@ -13,13 +13,14 @@ const index = () => {
     <SafeAreaView style ={styles.container}>
       <Text style ={styles.text}>Todo App</Text>
       <TextInput
+      placeholder='Enter your Todo'
         style={styles.input}
         onChangeText={setInput}
         value={input}
       />
 
       <TouchableOpacity style={styles.button} onPress={addtodo}>
-        <Text>Press Here</Text>
+        <Text style = {styles.btnText}>Press Here</Text>
       </TouchableOpacity>
     </SafeAreaView>
   )
@@ -35,15 +36,22 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    margin: 12,
+    borderColor: 'gray',
     borderWidth: 1,
-    padding: 10,
+    marginBottom: 10,
+    marginTop: 10,
+    width : 300,
+    padding: 10
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: 'black',
     padding: 10,
+    width : 300,
   },
+  btnText : {
+    color: 'white',
+  }
 })
 
 export default index
