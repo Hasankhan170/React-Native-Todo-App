@@ -4,12 +4,17 @@ import React, { useState } from 'react'
 
 const index = () => {
   const [input,setInput] = useState('')
-  const [todo,setTodo] = useState<string[]>(['hello world'])
+  const [todo,setTodo] = useState<string[]>([])
 
   const addtodo = ()=>{
+    if(input.trim() === "" || null){
+      alert('Please Enter a Todo')
+      return
+    }
     console.log(input);
     todo.push(input)
     setTodo([...todo])
+    setInput('')
   }
 
   const deleteTodo = (index:number)=>{
@@ -37,7 +42,7 @@ const index = () => {
         data={todo}
         renderItem={({item,index})=>{
           return <View style= {styles.item}>
-            <Text style ={{fontSize:20, backgroundColor:'red',}}>{item}</Text>
+            <Text style ={{fontSize:20}}>{item}</Text>
             <TouchableOpacity style={styles.Listdelete} 
             onPress={()=>{deleteTodo(index)}}
               activeOpacity={0.5}
