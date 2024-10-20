@@ -11,6 +11,11 @@ const index = () => {
     todo.push(input)
     setTodo([...todo])
   }
+
+  const deleteTodo = (index:number)=>{
+    todo.splice(index,1)
+    setTodo([...todo])
+  }
   return (
     <SafeAreaView style ={styles.container}>
       <Text style ={styles.text}>Todo App</Text>
@@ -32,17 +37,18 @@ const index = () => {
         data={todo}
         renderItem={({item,index})=>{
           return <View style= {styles.item}>
-            <Text style ={{fontSize:20}}>{item}</Text>
+            <Text style ={{fontSize:20, backgroundColor:'red',}}>{item}</Text>
             <TouchableOpacity style={styles.Listdelete} 
+            onPress={()=>{deleteTodo(index)}}
               activeOpacity={0.5}
             >
-              <Text>Delete</Text>
+              <Text style= {{color: "white"}}>Delete</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.Listedit} 
               activeOpacity={0.5}
             >
-              <Text>Edit</Text>
+              <Text style= {{color: "white"}}>Edit</Text>
             </TouchableOpacity>
           </View>
         }}
@@ -85,16 +91,12 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   item : {
-    backgroundColor : 'lightgray',
-    padding: 10,
-    marginBottom: 10,
     width : 300,
     justifyContent : 'center',
     alignItems : 'center'
   },
   innerText: {
     marginTop: 20,
-    marginBottom: 20,
   },
   Listdelete :{
     backgroundColor :'red',
